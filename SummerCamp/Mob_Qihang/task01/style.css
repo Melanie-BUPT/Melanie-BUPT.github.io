@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei";
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
+}
+
+body {
+    background-color: #6cc;
+    width: 30%;
+    margin: auto;
+}
+
+body > header,
+body > article,
+body > footer,
+article > section {
+    width: 100%;
+    margin: 2em auto;
+}
+
+header img {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+    border-radius: 80px;
+    border: 2px solid #fff;
+}
+
+#self-info p {
+    text-indent: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
