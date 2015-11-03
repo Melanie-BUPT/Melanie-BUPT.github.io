@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>GTD Tools</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>GTD Tools</h1>
+    </header>
+    <article id="main-body">
+        <section id="cate-container">
+            <h2>所有任务<span id="allTaskNum">(0)</span></h2>
+            <p>分类列表</p>
+            <ul id="catelist">
+            </ul>
+            <div id="add-new-cate">
+                <span class="fa fa-plus"></span>
+                <span>新增分类</span>
+            </div>
+        </section>
+        <section id="task-container">
+            <nav>
+                <ul>
+                    <li id="alltasks" class="active">所有</li>
+                    <li id="unfinished">未完成</li>
+                    <li id="finished">已完成</li>
+                </ul>
+            </nav>
+            <ul id="tasklist">
+            </ul>
+            <div id="add-new-task">
+                <span class="fa fa-plus"></span>
+                <span>新增任务</span>
+            </div>
+        </section>
+        <section id="data-display">
+            <div class="task-title">
+                <p>任务名称：<span></span></p>
+                <div id="manipulate">
+                    <span class="fa fa-check-square-o"></span>
+                    <span class="fa fa-pencil-square-o"></span>
+                </div>
+            </div>
+            <div class="task-date">
+                <p>任务日期：<span></span></p>
+            </div>
+            <div class="task-content">
+            </div>
+        </section>
+        <section id="data-edit">
+            <div class="task-title">
+                <input type="text" name="title" id="input-title" placeholder="请输入任务标题">
+            </div>
+            <div class="task-date">
+                <p>任务日期：<input type="date" name="date" id="input-date"></p>
+            </div>
+            <div class="task-content">
+                <textarea name="content" id="input-content" cols="95" rows="10" wrap="hard" placeholder = "请输入任务内容"></textarea>
+                <div id="save-cancle">
+                    <button id="saveit">保存修改</button>
+                    <button id="cancleit">取消修改</button>
+                </div>
+            </div>
+        </section>
+        <section id="mask">
+            <div id="mask-frame">
+                <div id="frame-head">
+                    <p>新增分类</p>
+                </div>
+                <div id="frame-body">
+                    <p>选择主分类：</p>
+                    <select name="selectCate" id="selectCate">
+                    </select>
+                    <p>新分类名称：</p>
+                    <input type="text" id="newCateName" placeholder="请输入新分类名称">
+                </div>
+                <div id="frame-foot">
+                    <button id="yeah">确认</button>
+                    <button id="nope">取消</button>
+                </div>
+            </div>
+        </section>
+    </article>
+    <script type="text/javascript" src="js/model.js"></script>
+    <script type="text/javascript" src="js/view.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
+</body>
+</html>
