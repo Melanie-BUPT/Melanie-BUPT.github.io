@@ -1,0 +1,370 @@
+/*
+* 应用头部样式
+*/
+header {
+    height: 60px;
+    width: 100%;
+    /*暂时设为1260，改回1280*/
+    min-width: 1260px;
+    background-color: #ddd;
+    border: solid 1px #ccc;
+}
+
+header h1 {
+    color: #999;
+    padding-left: 15px;
+    line-height: 60px;
+    font-size: 20px;
+}
+
+/*
+* 分类列表样式
+*/
+#cate-container {
+    min-width: 230px;
+    min-height: 540px;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    float: left;
+    background-color: #f2f2f2;
+    border-right: solid 1px #ccc;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+#cate-container h2,
+#cate-container p {
+    margin-top: 10px;
+    padding-left: 15px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 2;
+}
+
+#cate-container li.cate h2 {
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+#cate-container h3 {
+    margin-top: 3px;
+    padding-left: 42px;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 2;
+}
+
+#cate-container h2:hover,
+#cate-container h3:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#cate-container h2.active,
+#cate-container h3.active {
+    background-color: #fff;
+}
+
+.fa-close {
+    position: absolute;
+    margin-top: 7px;
+    right: 15px;
+    display: none;
+}
+
+#cate-container h2:hover .fa-close,
+#cate-container h3:hover .fa-close {
+    display: inline-block;
+}
+
+#add-new-cate {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top: solid 1px #ccc;
+    padding-left: 15px;
+    font-size: 15px;
+    line-height: 3;
+    cursor: pointer;
+}
+
+/*
+* 任务列表样式
+*/
+#task-container {
+    min-width: 230px;
+    min-height: 540px;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 230px;
+    float: left;
+    background-color: #fff;
+    border-right: solid 1px #ccc;
+}
+
+#task-container nav {
+    width: 100%;
+    height: 40px;
+    border-bottom: solid 1px #ccc;
+    background-color: #f2f2f2;
+}
+
+nav ul {
+    padding: 10px;
+}
+
+nav li {
+    display: inline-block;
+    padding: 0 10px;
+    border: solid 1px #f2f2f2;
+    font-size: 14px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+nav li.active {
+    border: solid 1px #ccc;
+    background-color: #fff;
+}
+
+#tasklist p {
+    height: 28px;
+    padding: 0 15px;
+    line-height: 28px;
+    font-size: 14px;
+    background-color: #fafaee;
+}
+
+#tasklist h4 {
+    height: 27px;
+    padding-left: 33px;
+    line-height: 27px;
+    font-size: 14px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#tasklist h4:hover,
+#tasklist h4.active {
+    background-color: #f2f2f2;
+}
+
+#tasklist h4:hover .fa-close {
+    display: inline-block;
+}
+
+.fa-check {
+    position: absolute;
+    margin-top: 7px;
+    left: 15px;
+    display: none;
+}
+
+#tasklist li.finished {
+    color: #238c00;
+}
+
+#tasklist li.finished .fa-check {
+    display: inline-block;
+}
+
+#add-new-task {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top: solid 1px #ccc;
+    background-color: #f2f2f2;
+    padding-left: 15px;
+    font-size: 15px;
+    line-height: 3;
+    cursor: pointer;
+}
+
+/*
+* 任务内容展示样式
+*/
+#data-display {
+    /*暂时设为800，改回820*/
+    min-width: 800px;
+    min-height: 540px;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 460px;
+    right: 0px;
+    float: left;
+    background-color: #fff;
+    font-size: 15px;
+    display: block;
+}
+
+.task-title {
+    width: 100%;
+    height: 50px;
+    background-color: #f2f2f2;
+    border-bottom: solid 1px #ccc;
+    padding: 15px;
+}
+
+.task-title p {
+    display: inline-block;
+}
+
+#manipulate {
+    display: inline-block;
+    position: absolute;
+    right: 50px;
+    font-size: 25px;
+    line-height: 25px;
+}
+
+#manipulate .fa {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.task-date {
+    width: 100%;
+    height: 50px;
+    background-color: #fafaee;
+    border-bottom: solid 1px #ccc;
+    padding: 15px;
+}
+
+.task-content {
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    bottom: 0;
+    padding: 15px;
+    line-height: 1.5;
+}
+
+/*
+* 任务内容编辑样式
+*/
+#data-edit {
+    /*暂时设为800，改回820*/
+    min-width: 800px;
+    min-height: 540px;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 460px;
+    right: 0px;
+    float: left;
+    background-color: #fff;
+    font-size: 15px;
+    display: none;
+}
+
+#data-edit input {
+    height: 30px;
+    padding-left: 5px;
+    border: solid 1px #ccc;
+    font-family: "Microsoft Yahei";
+}
+
+#data-edit .task-title,
+#data-edit .task-date,
+#data-edit .task-content {
+    padding: 10px 10px 10px 15px;
+}
+
+textarea {
+    position: absolute;
+    top: 15px;
+    bottom: 55px;
+    left: 15px;
+    right: 15px;
+    border: solid 1px #ccc;
+    font-family: "Microsoft Yahei";
+    resize: none;
+}
+
+#save-cancle {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+#save-cancle button {
+    width: 100px;
+    height: 35px;
+    margin-left: 20px;
+    border: solid 1px #ccc;
+    cursor: pointer;
+}
+
+#saveit,
+#changeit {
+    background-color: #ccc;
+}
+
+/*
+* 添加任务浮层样式
+*/
+#mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: none;
+}
+
+#mask-frame {
+    width: 416px;
+    height: 225px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -113px;
+    margin-left: -208px;
+    background-color: #fff;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+#frame-head {
+    margin: 15px;
+    padding-bottom: 15px;
+    border-bottom: dotted 1px #ccc;
+    font-size: 20px;
+    text-align: center;
+}
+
+#frame-body {
+    margin: 20px 75px 10px;
+    font-size: 15px;
+}
+
+#frame-body p {
+    display: inline-block;
+}
+
+#frame-body select,
+#frame-body input {
+    width: 160px;
+    height: 30px;
+    margin-bottom: 10px;
+    font-family: "Microsoft Yahei";
+}
+
+#frame-foot {
+    margin: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#frame-foot button {
+    width: 80px;
+    height: 30px;
+    margin-left: 20px;
+    border: solid 1px #ccc;
+    cursor: pointer;
+}
