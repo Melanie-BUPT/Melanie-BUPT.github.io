@@ -264,19 +264,20 @@ function deleteCate(element) {
                 for (var j = 0; j < curSubCate.child.length; j++) {
                     var curTaskID = curSubCate.child[j];
                     var curTask = getTaskById(curTaskID);
-                    var curTaskPos = taskJson.indexOf(curTask);
+                    var taskArr = [taskJson];
+                    var curTaskPos = taskArr.indexOf(curTask);
                     taskJson.splice(curTaskPos, 1);
                 }
                 localStorage.task = JSON.stringify(taskJson);
             }
-
-            var curSubCatePos = subCateJson.indexOf(curSubCate);
+            var subCateArr = [subCateJson];
+            var curSubCatePos = subCateArr.indexOf(curSubCate);
             subCateJson.splice(curSubCatePos, 1);
         }
         localStorage.subCate = JSON.stringify(subCateJson);
     }
-    
-    var curCatePos = cateJson.indexOf(curCate);
+    var cateArr = [cateJson];
+    var curCatePos = cateArr.indexOf(curCate);
     cateJson.splice(curCatePos, 1);
 
     localStorage.cate = JSON.stringify(cateJson);
@@ -296,13 +297,14 @@ function deleteSubCate(element) {
         for (var i = 0; i < curSubCate.child.length; i++) {
             var curTaskID = curSubCate.child[i];
             var curTask = getTaskById(curTaskID);
-            var curTaskPos = taskJson.indexOf(curTask);
+            var taskArr = [taskJson];
+            var curTaskPos = taskArr.indexOf(curTask);
             taskJson.splice(curTaskPos, 1);
         }
         localStorage.task = JSON.stringify(taskJson);
     }
-
-    var curSubCatePos = subCateJson.indexOf(curSubCate);
+    var subCateArr = [subCateJson];
+    var curSubCatePos = subCateArr.indexOf(curSubCate);
     subCateJson.splice(curSubCatePos, 1);
 
     var curCateID = curSubCate.pid;
@@ -588,8 +590,8 @@ function deleteTask(element) {
     var curTaskID = element.parentNode.parentNode.getAttribute("data-taskID");
     var curTask = getTaskById(curTaskID);
 
-
-    var curTaskPos = taskJson.indexOf(curTask);
+    var taskArr = [taskJson];
+    var curTaskPos = taskArr.indexOf(curTask);
     taskJson.splice(curTaskPos, 1);
 
     var curSubCateID = curTask.pid;
