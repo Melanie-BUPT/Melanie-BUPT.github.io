@@ -109,8 +109,8 @@ function initCateList() {
                 for (var j = 0; j < cateJson[i].child.length; j++) {
                     var subCateID = cateJson[i].child[j];
                     liStr += '<li class="subCate" data-subCateID="' + subCateID
-                            + '"><h3><span class="fa fa-file-o"></span>' + subCateJson[subCateID].name
-                            + '<span class="taskNum">(' + getTaskNumBySubCate(subCateJson[subCateID])
+                            + '"><h3><span class="fa fa-file-o"></span>' + getSubCateById(subCateID).name
+                            + '<span class="taskNum">(' + getTaskNumBySubCate(getSubCateById(subCateID))
                             + ')</span><span class="fa fa-close"></span></h3></li>'
                 }
                 liStr += '</ul></li>';
@@ -263,22 +263,25 @@ function deleteCate(element) {
                 var taskJson = getAllTasks();
                 for (var j = 0; j < curSubCate.child.length; j++) {
                     var curTaskID = curSubCate.child[j];
-                    var curTask = getTaskById(curTaskID);
-                    var taskArr = [taskJson];
-                    var curTaskPos = taskArr.indexOf(curTask);
-                    taskJson.splice(curTaskPos, 1);
+                    // var curTask = getTaskById(curTaskID);
+                    // var taskArr = [curTask];
+                    // var curTaskPos = taskJson.indexOf(taskArr);
+                    // taskJson.splice(curTaskPos, 1);
+                    taskJson = deleteTaskById(curTaskID);
                 }
                 localStorage.task = JSON.stringify(taskJson);
             }
-            var subCateArr = [subCateJson];
-            var curSubCatePos = subCateArr.indexOf(curSubCate);
-            subCateJson.splice(curSubCatePos, 1);
+            // var subCateArr = [curSubCate];
+            // var curSubCatePos = subCateJson.indexOf(subCateArr);
+            // subCateJson.splice(curSubCatePos, 1);
+            subCateJson = deleteSubCateById(curSubCateID);
         }
         localStorage.subCate = JSON.stringify(subCateJson);
     }
-    var cateArr = [cateJson];
-    var curCatePos = cateArr.indexOf(curCate);
-    cateJson.splice(curCatePos, 1);
+    // var cateArr = [curCate];
+    // var curCatePos = cateJson.indexOf(cateArr);
+    // cateJson.splice(curCatePos, 1);
+    cateJson = deleteCateById(curCateID);
 
     localStorage.cate = JSON.stringify(cateJson);
     initCateList();
@@ -297,20 +300,23 @@ function deleteSubCate(element) {
         for (var i = 0; i < curSubCate.child.length; i++) {
             var curTaskID = curSubCate.child[i];
             var curTask = getTaskById(curTaskID);
-            var taskArr = [taskJson];
-            var curTaskPos = taskArr.indexOf(curTask);
-            taskJson.splice(curTaskPos, 1);
+
+            taskJson = deleteTaskById(curTaskID);
         }
         localStorage.task = JSON.stringify(taskJson);
     }
-    var subCateArr = [subCateJson];
-    var curSubCatePos = subCateArr.indexOf(curSubCate);
-    subCateJson.splice(curSubCatePos, 1);
+    
+    subCateJson = deleteSubCateById(curSubCateID);
 
     var curCateID = curSubCate.pid;
     var curCate = getCateById(curCateID);
 
-    curCate.child.splice(curCate.child.indexOf(curSubCateID), 1);
+    for (var i = 0; i < curCate.child.length; i++) {
+        if (curCate.child[i] == curSubCateID) {
+            curCate.child.splice(i, 1);
+        }
+    }
+
     var cateJson = setCateById(curCateID, curCate);
 
     localStorage.cate = JSON.stringify(cateJson);
@@ -378,6 +384,39 @@ function setTaskById(id, task) {
     for (var i = 0; i < taskJson.length; i++) {
         if (taskJson[i].id == id) {
             taskJson[i] = task;
+        }
+    }
+    return taskJson;
+}
+
+//通过id删除主分类
+function deleteCateById(id) {
+    var cateJson = getAllCates();
+    for (var i = 0; i < cateJson.length; i++) {
+        if (cateJson[i].id == id) {
+            cateJson.splice(i, 1);
+        }
+    }
+    return cateJson;
+}
+
+//通过id删除子分类
+function deleteSubCateById(id) {
+    var subCateJson = getAllSubCates();
+    for (var i = 0; i < subCateJson.length; i++) {
+        if (subCateJson[i].id == id) {
+            subCateJson.splice(i, 1);
+        }
+    }
+    return subCateJson;
+}
+
+//通过id删除任务
+function deleteTaskById(id) {
+    var taskJson = getAllTasks();
+    for (var i = 0; i < taskJson.length; i++) {
+        if (taskJson[i].id == id) {
+            taskJson.splice(i, 1);
         }
     }
     return taskJson;
@@ -590,14 +629,17 @@ function deleteTask(element) {
     var curTaskID = element.parentNode.parentNode.getAttribute("data-taskID");
     var curTask = getTaskById(curTaskID);
 
-    var taskArr = [taskJson];
-    var curTaskPos = taskArr.indexOf(curTask);
-    taskJson.splice(curTaskPos, 1);
+    taskJson = deleteTaskById(curTaskID);
 
     var curSubCateID = curTask.pid;
     var curSubCate = getSubCateById(curSubCateID);
 
-    curSubCate.child.splice(curSubCate.child.indexOf(curTaskID), 1);
+    for (var i = 0; i < curSubCate.child.length; i++) {
+        if (curSubCate.child[i] == curTaskID) {
+            curSubCate.child.splice(i, 1);
+        }
+    }
+
     subCateJson = setSubCateById(curSubCateID, curSubCate);
 
     localStorage.task = JSON.stringify(taskJson);
